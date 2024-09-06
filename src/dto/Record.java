@@ -4,11 +4,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Record {
-    private final String description;
     private final Map<String, Double> features;
 
-    public Record(String description, Map<String, Double> features) {
-        this.description = description;
+    public Record(Map<String, Double> features) {
         this.features = features;
     }
 
@@ -16,15 +14,10 @@ public class Record {
         return features;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public String toString() {
         return "Record{" +
-                "description='" + description + '\'' +
-                ", features=" + features +
+                "features=" + features +
                 '}';
     }
 
@@ -33,11 +26,11 @@ public class Record {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Record record = (Record) o;
-        return Objects.equals(description, record.description) && Objects.equals(features, record.features);
+        return Objects.equals(features, record.features);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, features);
+        return Objects.hashCode(features);
     }
 }
