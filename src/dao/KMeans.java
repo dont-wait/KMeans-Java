@@ -3,7 +3,6 @@ package dao;
 import Util.*;
 import dto.*;
 import dto.Record;
-
 import java.util.*;
 
 import static Util.UtilCentroid.*;
@@ -24,7 +23,7 @@ public class KMeans {
                 Centroid centroid =  nearestCentroid(record, centroids, distance); //tim centroid gan nhat cho record
                 assignToCluster(clusters, record, centroid); //theem record vao centroid
             }
-            //Dung lai khi khong co su thay doi
+            //Dung lai khi khong co su thay doi hoặc tới vòng lặp cuối
             boolean shoudStop = isLastIterations || clusters.equals(lastStage);
             lastStage = clusters;
             if(shoudStop) {

@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 
 public class Centroid {
     private final Map<String, Double> coordinates;
-
+    //                 dim1 value...
+    //                 dim2 value...
+    //                 ...3
     public Centroid(Map<String, Double> coordinates) {
         this.coordinates = coordinates;
     }
