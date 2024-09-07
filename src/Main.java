@@ -3,18 +3,17 @@ import dao.KMeans;
 import dto.Centroid;
 import dto.Record;
 import Util.EuclidDistance;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
+    public static void main2(String[] args) {
+        System.out.println("Hello World!");
+    }
     public static void main(String[] args) {
-        List<Record> records = init20Vecto5DimRandom();
+        List<Record> records = init20Vecto5DimRandom(); //init data
         int k = 2;
         List<Centroid> centroid = UtilCentroid.randomCentroids(records, k);  //khoi tao tam
-        Map<Centroid, List<Record>> cluster = KMeans.fit(records, k, new EuclidDistance(), 1000);
+        Map<Centroid, List<Record>> cluster = KMeans.fit(records, k, new EuclidDistance(), 1000); //run algorithm
         cluster.forEach((key, value) -> {
             System.out.println("---------------------------------------------------------------------------------------");
             System.out.println("Cluster: " + key);
