@@ -3,24 +3,60 @@ import dao.KMeans;
 import dto.Centroid;
 import dto.Record;
 import Util.EuclidDistance;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.util.*;
 
 public class Main {
-    public static void main2(String[] args) {
-        System.out.println("Hello World!");
-    }
     public static void main(String[] args) {
-        List<Record> records = init20Vecto5DimRandom(); //init data
-        int k = 2;
-        List<Centroid> centroid = UtilCentroid.randomCentroids(records, k);  //khoi tao tam
+        int k = 3;
+        List<Record> records = readRecordFromXML("src/data/vecto.xml");
         Map<Centroid, List<Record>> cluster = KMeans.fit(records, k, new EuclidDistance(), 1000); //run algorithm
         cluster.forEach((key, value) -> {
             System.out.println("---------------------------------------------------------------------------------------");
-            System.out.println("Cluster: " + key);
+            System.out.println(STR."Cluster: \{key}");
             value.forEach(System.out::println);
         });
     }
 
+    public static List<Record> readRecordFromXML(String path) {
+        List<Record> records = new ArrayList<Record>();
+
+        try {
+            File xmlFile = new File(path);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbFactory.newDocumentBuilder();
+            Document doc = builder.parse(xmlFile);
+            doc.getDocumentElement().normalize(); //Chuan hoa file, example: xoá khoảng trắng,...
+
+            //Tạo danh sách node để lưu các đối tượng record trong thẻ records
+            NodeList nodeList = doc.getElementsByTagName("record");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element recordElement = (Element) nodeList.item(i); //phần tử thứ i của list record
+                String recordId = recordElement.getAttribute("id");
+
+                // Trong mỗi thẻ record lại có nhiều features
+                // duyệt từng features(J) lấy ra từng cặp key-value
+                Map<String, Double> features = new HashMap<String, Double>();
+                NodeList featureList = recordElement.getElementsByTagName("feature");
+                for (int j = 0; j < featureList.getLength(); j++) {
+                        Element featureElement = (Element) featureList.item(j);
+                        String featureNameTag = featureElement.getAttribute("name");
+                        Double featureValue = Double.parseDouble(featureElement.getTextContent());
+                        features.put(featureNameTag, featureValue);
+                }
+                records.add(new Record(features));
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace(); //*
+        }
+        return records;
+    }
     public static List<Record> init20Vecto5DimRandom() {
         Random random = new Random();
         List<Record> records = new ArrayList<Record>();

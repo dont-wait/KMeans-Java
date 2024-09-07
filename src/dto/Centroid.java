@@ -2,6 +2,7 @@ package dto;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Centroid {
     private final Map<String, Double> coordinates;
@@ -16,9 +17,13 @@ public class Centroid {
 
     @Override
     public String toString() {
-        return "Centroid{" +
-                "coordinates=" + coordinates +
-                '}';
+        return "Centroid { " +
+                "coordinates: { " +
+                coordinates.entrySet().stream()
+                        .map(entry -> entry.getKey() + " = " + entry.getValue())
+                        .collect(Collectors.joining(", ")) +
+                " } " +
+                "}";
     }
 
     @Override

@@ -2,6 +2,7 @@ package dto;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Record {
     private final Map<String, Double> features;
@@ -16,9 +17,13 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" +
-                "features=" + features +
-                '}';
+        return "Record { " +
+                "features: { " +
+                features.entrySet().stream()
+                        .map(entry -> entry.getKey() + " = " + entry.getValue())
+                        .collect(Collectors.joining(", ")) +
+                " } " +
+                "}";
     }
 
     @Override
