@@ -1,4 +1,4 @@
-package Util;
+package Util.Distance;
 
 import java.util.Map;
 

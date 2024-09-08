@@ -1,11 +1,11 @@
 package dao;
 
-import Util.*;
+import Util.Distance.Distance;
 import dto.*;
 import dto.Record;
 import java.util.*;
 
-import static Util.UtilCentroid.*;
+import static Util.Centroid.UtilCentroid.*;
 public class KMeans {
     private static final Random random = new Random();
 
@@ -30,8 +30,8 @@ public class KMeans {
                 break;
             }
             //cap nhat lai tam cum
-            centroids = relocateCentroids(clusters);
-            clusters = new HashMap<>();
+            centroids = relocateCentroids(clusters); //di chuyen vao trung tam cluster
+            clusters = new HashMap<>(); //reset clusters cho lan lap tiep theo
         }
 
         return lastStage;

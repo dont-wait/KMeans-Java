@@ -1,4 +1,5 @@
-package Util;
+package Util.Centroid;
+import Util.Distance.Distance;
 import dto.Centroid;
 import dto.Record;
 import java.util.*;
