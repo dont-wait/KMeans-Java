@@ -2,6 +2,12 @@ package Util.Centroid;
 import Util.Distance.Distance;
 import dto.Centroid;
 import dto.Record;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.*;
+import java.io.File;
 import java.util.*;
 
 import static java.util.stream.Collectors.toList;
@@ -10,6 +16,64 @@ import static java.util.stream.Collectors.toSet;
 public class UtilCentroid {
     public UtilCentroid() {}
 
+    public static List<Centroid> chooseCentroids(List<Record> records, int k, String path) {
+        List<Centroid> centroids = new ArrayList<>();
+        List<Integer> idKeyList = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+
+        // Nhập ID từ người dùng
+        for (int i = 0; i < k; i++) {
+            System.out.print("Choose Record ID you wanna make it's centroid: ");
+            int idKey = sc.nextInt();
+            idKeyList.add(idKey);
+        }
+
+        try {
+            File xmlFile = new File(path);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbFactory.newDocumentBuilder();
+            Document doc = builder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nodeList = doc.getElementsByTagName("record");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element recordElement = (Element) nodeList.item(i); //phần tử thứ i của list record
+                String recordId = recordElement.getAttribute("id");
+
+                // Trong mỗi thẻ record lại có nhiều features
+                // duyệt từng features(J) lấy ra từng cặp key-value
+                for (int id : idKeyList) {
+                    if (Integer.parseInt(recordId) == id) {
+                        Map<String, Double> features = new HashMap<String, Double>();
+                        NodeList featureList = recordElement.getElementsByTagName("feature");
+                        for (int j = 0; j < featureList.getLength(); j++) {
+                            Element featureElement = (Element) featureList.item(j);
+                            String featureNameTag = featureElement.getAttribute("name");
+                            Double featureValue = Double.parseDouble(featureElement.getTextContent());
+                            features.put(featureNameTag, featureValue);
+                        }
+                        centroids.add(new Centroid(features));
+                        break;
+                    }
+                }
+                Map<String, Double> features = new HashMap<String, Double>();
+                NodeList featureList = recordElement.getElementsByTagName("feature");
+                for (int j = 0; j < featureList.getLength(); j++) {
+                    Element featureElement = (Element) featureList.item(j);
+                    String featureNameTag = featureElement.getAttribute("name");
+                    Double featureValue = Double.parseDouble(featureElement.getTextContent());
+                    features.put(featureNameTag, featureValue);
+                }
+                records.add(new Record(features));
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return centroids;
+    }
     //Khởi tạo k centroid ngẫu nhiên dựa trên min max của all record
     public static List<Centroid> randomCentroids(List<Record> records, int k) {
         List<Centroid> centroids = new ArrayList<>();

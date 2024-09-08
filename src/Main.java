@@ -1,8 +1,10 @@
+import Util.Centroid.UtilCentroid;
 import Util.ReadData.ReadFile;
 import dao.KMeans;
-import dto.Centroid;
-import dto.Record;
+import dto.*;
 import Util.Distance.EuclidDistance;
+import dto.Record;
+
 import java.util.*;
 
 
@@ -17,6 +19,7 @@ public class Main {
             System.out.println(STR."Cluster: \{key}");
             value.forEach(System.out::println);
         });
+
     }
 
 

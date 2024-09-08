@@ -2,8 +2,8 @@
 <records>
     <record id="1">
         <feature name="dim1">2</feature>
-        <feature name="dim2">2</feature>
-        <feature name="dim3">3</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">1</feature>
         <feature name="dim4">1</feature>
         <feature name="dim5">2</feature>
     </record>
@@ -25,6 +25,22 @@
     </record>
 
     <record id="4">
+        <feature name="dim1">3</feature>
+        <feature name="dim2">4</feature>
+        <feature name="dim3">2</feature>
+        <feature name="dim4">1</feature>
+        <feature name="dim5">6</feature>
+    </record>
+
+    <record id="5">
+        <feature name="dim1">1</feature>
+        <feature name="dim2">1</feature>
+        <feature name="dim3">1</feature>
+        <feature name="dim4">2</feature>
+        <feature name="dim5">3</feature>
+    </record>
+
+    <record id="6">
         <feature name="dim1">4</feature>
         <feature name="dim2">3</feature>
         <feature name="dim3">1</feature>
@@ -32,15 +48,71 @@
         <feature name="dim5">6</feature>
     </record>
 
-    <record id="5">
+    <record id="7">
+        <feature name="dim1">3</feature>
+        <feature name="dim2">2</feature>
+        <feature name="dim3">1</feature>
+        <feature name="dim4">3</feature>
+        <feature name="dim5">2</feature>
+    </record>
+
+    <record id="8">
         <feature name="dim1">2</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">4</feature>
+        <feature name="dim4">5</feature>
+        <feature name="dim5">2</feature>
+    </record>
+
+    <record id="9">
+        <feature name="dim1">2</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">2</feature>
+        <feature name="dim4">6</feature>
+        <feature name="dim5">3</feature>
+    </record>
+
+    <record id="10">
+        <feature name="dim1">3</feature>
+        <feature name="dim2">2</feature>
+        <feature name="dim3">5</feature>
+        <feature name="dim4">2</feature>
+        <feature name="dim5">3</feature>
+    </record>
+
+    <record id="11">
+        <feature name="dim1">1</feature>
         <feature name="dim2">2</feature>
         <feature name="dim3">4</feature>
         <feature name="dim4">2</feature>
         <feature name="dim5">3</feature>
     </record>
 
-    <record id="6">
+    <record id="12">
+        <feature name="dim1">2</feature>
+        <feature name="dim2">1</feature>
+        <feature name="dim3">5</feature>
+        <feature name="dim4">4</feature>
+        <feature name="dim5">1</feature>
+    </record>
+
+    <record id="13">
+        <feature name="dim1">7</feature>
+        <feature name="dim2">1</feature>
+        <feature name="dim3">9</feature>
+        <feature name="dim4">2</feature>
+        <feature name="dim5">1</feature>
+    </record>
+
+    <record id="14">
+        <feature name="dim1">2</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">4</feature>
+        <feature name="dim4">2</feature>
+        <feature name="dim5">3</feature>
+    </record>
+
+    <record id="15">
         <feature name="dim1">4</feature>
         <feature name="dim2">2</feature>
         <feature name="dim3">7</feature>
@@ -48,42 +120,42 @@
         <feature name="dim5">3</feature>
     </record>
 
-    <record id="7">
+    <record id="16">
+        <feature name="dim1">5</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">4</feature>
+        <feature name="dim4">3</feature>
+        <feature name="dim5">2</feature>
+    </record>
+
+    <record id="17">
         <feature name="dim1">1</feature>
+        <feature name="dim2">3</feature>
+        <feature name="dim3">2</feature>
+        <feature name="dim4">4</feature>
+        <feature name="dim5">6</feature>
+    </record>
+
+    <record id="18">
+        <feature name="dim1">6</feature>
         <feature name="dim2">2</feature>
-        <feature name="dim3">3</feature>
+        <feature name="dim3">5</feature>
         <feature name="dim4">4</feature>
         <feature name="dim5">3</feature>
     </record>
 
-    <record id="8">
-        <feature name="dim1">4</feature>
-        <feature name="dim2">6</feature>
+    <record id="19">
+        <feature name="dim1">2</feature>
+        <feature name="dim2">3</feature>
         <feature name="dim3">2</feature>
-        <feature name="dim4">6</feature>
-        <feature name="dim5">2</feature>
+        <feature name="dim4">3</feature>
+        <feature name="dim5">1</feature>
     </record>
 
-    <record id="9">
+    <record id="20">
         <feature name="dim1">4</feature>
         <feature name="dim2">6</feature>
         <feature name="dim3">7</feature>
-        <feature name="dim4">2</feature>
-        <feature name="dim5">3</feature>
-    </record>
-
-    <record id="10">
-        <feature name="dim1">4</feature>
-        <feature name="dim2">3</feature>
-        <feature name="dim3">2</feature>
-        <feature name="dim4">1</feature>
-        <feature name="dim5">2</feature>
-    </record>
-
-    <record id="11">
-        <feature name="dim1">4</feature>
-        <feature name="dim2">2</feature>
-        <feature name="dim3">3</feature>
         <feature name="dim4">2</feature>
         <feature name="dim5">3</feature>
     </record>

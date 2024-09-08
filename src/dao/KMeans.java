@@ -11,7 +11,8 @@ public class KMeans {
 
     public static Map<Centroid, List<Record>> fit(List<Record> records, int k, Distance distance, int maxIterations) {
 
-        List<Centroid> centroids = randomCentroids(records, k);
+        //List<Centroid> centroids = randomCentroids(records, k);
+        List<Centroid> centroids = chooseCentroids(records, k, "src/data/20vecto.xml");
         Map<Centroid, List<Record>> clusters = new HashMap<>();
         Map<Centroid, List<Record>> lastStage = new HashMap<>();
 
@@ -20,7 +21,7 @@ public class KMeans {
 
             //Trong mỗi lần lặp ta đi tìm tâm cụm gần nhất cho mỗi record
             for(Record record : records) {
-                Centroid centroid =  nearestCentroid(record, centroids, distance); //tim centroid gan nhat cho record
+                Centroid centroid = (Centroid) nearestCentroid(record, centroids, distance); //tim centroid gan nhat cho record
                 assignToCluster(clusters, record, centroid); //theem record vao centroid
             }
             //Dung lai khi khong co su thay doi hoặc tới vòng lặp cuối
